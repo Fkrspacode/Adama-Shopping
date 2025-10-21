@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Customers</title>
+  <style>
+    body { font-family: Arial; background: #f5f5f5; margin: 0; padding: 20px; }
+    h1 { color: #222; }
+    .customer-card {
+      background: #fff; padding: 15px; margin: 10px 0;
+      border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex; align-items: center; gap: 15px; justify-content: space-between;
+    }
+    .customer-info {
+      display: flex; align-items: center; gap: 15px;
+    }
+    .customer-info img {
+      width: 70px; height: 70px; border-radius: 50%; object-fit: cover;
+    }
+    .unfollow-btn {
+      background: #e74c3c; color: white; border: none; padding: 8px 12px;
+      border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s;
+    }
+    .unfollow-btn:hover { background: #c0392b; }
+  </style>
+</head>
+<body>
+  <h1>👥 My Customers</h1>
+
+  <% if (!customers || customers.length === 0) { %>
+    <p>You have no customers yet. Follow someone from the home page!</p>
+  <% } else { %>
+    <% customers.forEach(customer => { %>
+      <div class="customer-card" id="customer-<%= customer.id %>">
+        <div class="customer-info">
+          <img src="/uploads/<%= customer.image || 'default-user.png' %>" alt="<%= customer.name %>">
+          <div>
+            <h3><%= customer.name %></h3>
+            <p>📞 <%= customer.phone %></p>
+            <p>✉️ <%= customer.email %></p>
+          </div>
+        </div>
+        <button class="unfollow-btn" data-id="<%= customer.id %>">Unfollow</button>
+      </div>
+    <% }) %>
+  <% } %>
+
+  <script>
+    // Attach event listeners to all unfollow buttons
+    document.querySelectorAll('.unfollow-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const customerId = btn.dataset.id;
+
+        try {
+          const res = await fetch('/follow/unfollow/' + customerId, { method: 'POST' });
+          const data = await res.json();
+
+          if (data.success) {
+            // Remove the customer card from DOM
+            const card = document.getElementById('customer-' + customerId);
+            if (card) card.remove();
+          } else {
+            alert('Failed to unfollow customer. Try again.');
+          }
+        } catch (err) {
+          console.error('Error unfollowing customer:', err);
+          alert('Error occurred. Check console for details.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

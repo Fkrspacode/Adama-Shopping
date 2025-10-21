@@ -1,0 +1,59 @@
+code
+Html
+play_circle
+download
+content_copy
+expand_less
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Post - Adama Shopping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/edp.css">
+  <style>
+  
+  </style>
+</head>
+<body>
+<header>
+  <!-- No sidebar toggle button needed here as it's not the home page with a sidebar -->
+  <div class="header-left">
+    <h1><img src="images/ads.png" alt="Adama Shopping Logo"> Adama Shopping</h1>
+  </div>
+  <nav class="header-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/privecy" class="nav-link">Privacy</a>
+    <a href="/services" class="nav-link">Service</a>
+  </nav>
+</header>
+
+  <div class="edit-container">
+    <h2>Edit Your Post</h2>
+    <form action="/mypost/edit/<%= post.id %>" method="POST" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Post Title" value="<%= post.title %>" required>
+      <textarea name="description" placeholder="Post Description" rows="5" required><%= post.description %></textarea>
+      <input type="text" name="budget" placeholder="Budget (Birr)" value="<%= post.budget %>" required>
+      <input type="text" name="category" placeholder="Category" value="<%= post.category %>" required>
+      
+      <% if (post.image) { %>
+        <img src="/images/<%= post.image %>" alt="Current Image" class="current-image">
+      <% } %>
+      
+      <div class="file-input-wrapper">
+        <input type="file" name="image" id="imageUpload" accept="image/*">
+        <label for="imageUpload" class="file-input-display">
+          <span class="material-icons">cloud_upload</span>
+          <span class="file-input-name" id="fileName">Upload new image (optional)</span>
+        </label>
+      </div>
+
+      <button type="submit">Update Post</button>
+    </form>
+  </div>
+<script src="/js/edpo.js"></script>
+
+</body>
+</html>

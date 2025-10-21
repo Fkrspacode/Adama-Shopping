@@ -1,0 +1,115 @@
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn {
+      background: #2ecc71;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: #27ae60; }
+
+    .logout-btn {
+      background-color: #e74c3c;
+    }
+    .logout-btn:hover { background-color: #c0392b; }
+
+    .orders {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .order {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    .order:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+    .order img.post-image {
+      width: 120px;
+      height: 80px;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+
+    .order-details {
+      flex: 1;
+    }
+
+    .order-details h3 { margin: 0 0 5px; }
+
+    .buyer-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    .buyer-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .order-meta {
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+
+    .status-paid {
+      color: green;
+      font-weight: bold;
+    }
+    .status-unpaid {
+      color: red;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #7f8c8d;
+    }

@@ -1,0 +1,255 @@
+    :root {
+      --primary: #4A90E2;
+      --secondary: #50C878;
+      --accent: #FFB347;
+      --danger: #FF6B6B;
+      --text: #333C4E;
+      --light-text: #6A7A90;
+      --light-bg: #F0F2F5;
+      --card-bg: #FFFFFF;
+      --radius: 12px;
+      --large-radius: 18px;
+      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+      --hover-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      --transition-speed: 0.3s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      padding: 0 20px 40px; /* Adjust padding as needed */
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 18px 30px;
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      margin-top: 25px;
+      animation: fadeIn 0.6s ease;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1200px; /* Match home page's conceptual width */
+      z-index: 900;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-left h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-left h1 img {
+      height: 40px; /* Adjust height of your logo */
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    .header-nav .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: var(--radius);
+      transition: var(--transition-speed);
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px; /* Space between icon and text */
+    }
+
+    .header-nav .nav-link:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    .header-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+    .header-nav .nav-link .material-icons {
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+        margin-top: 15px;
+      }
+      .header-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 15px;
+      }
+      .header-left h1 {
+        font-size: 24px;
+      }
+    }
+
+
+    h1 {
+      color: var(--text);
+      margin: 50px 0 30px;
+      font-size: 2.5em;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.03);
+      text-align: center;
+      animation: fadeIn 0.7s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    form {
+      background-color: var(--card-bg);
+      padding: 40px;
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 450px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeIn 0.8s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    label {
+      font-weight: 500;
+      color: var(--text);
+      font-size: 1em;
+      margin-bottom: 8px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px 12px 45px; /* Left padding for icon */
+      border: 1px solid #D1D9E6;
+      border-radius: var(--radius);
+      font-size: 1em;
+      box-sizing: border-box;
+      transition: var(--transition-speed);
+      color: var(--text);
+    }
+
+    input[type="email"]::placeholder,
+    input[type="password"]::placeholder {
+      color: var(--light-text);
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(74,144,226,0.2);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 45px; /* Adjust based on label height and input padding */
+      color: var(--light-text);
+      font-size: 1.2em;
+    }
+
+    button[type="submit"] {
+      background-color: var(--primary);
+      color: white;
+      padding: 14px 25px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-speed);
+      width: 100%;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #3A7DD0;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+        form {
+            padding: 25px;
+            gap: 15px;
+            margin: 0 15px;
+        }
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px 12px 10px 40px;
+        }
+        .input-icon {
+            left: 12px;
+            top: 42px;
+            font-size: 1em;
+        }
+        button[type="submit"] {
+            padding: 12px 20px;
+            font-size: 1em;
+        }
+    }

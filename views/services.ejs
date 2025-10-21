@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Adama Shopping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/services.css">
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><span class="material-icons">menu</span></button>
+    <div class="header-left">
+      <h1><img src="/images/ads.png" alt="Adama Shopping Logo">Adama Shopping</h1>
+    </div>
+    <nav class="header-nav">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/about" class="nav-link">About</a>
+      <a href="/privecy" class="nav-link">Privacy</a>
+      <a href="/services" class="nav-link active">Service</a>
+    </nav>
+  </header>
+
+  <div class="content-container">
+    <h1>Our Services</h1>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="/images/des.png" alt="Fast Delivery">
+        <h3>Fast & Reliable Delivery</h3>
+        <p>Get your favorite products delivered to your doorstep quickly and safely, with real-time tracking and efficient logistics.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="/images/quality.png" alt="Quality Products">
+        <h3>Premium Quality Products</h3>
+        <p>We partner with trusted local and international vendors to provide only the highest quality items across all categories.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="/images/support.png" alt="Customer Support">
+        <h3>Dedicated 24/7 Support</h3>
+        <p>Our friendly and knowledgeable customer support team is always ready to assist you, day or night, with any inquiries or issues.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="/images/payment.png" alt="Flexible Payment">
+        <h3>Secure & Flexible Payment</h3>
+        <p>Enjoy hassle-free transactions with multiple payment options including cash on delivery, mobile money, and secure online payments.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="https://t.me/YourTelegramUsername" class="telegram-btn" target="_blank">
+        <span class="material-icons">send</span> Contact us on Telegram
+      </a>
+    </div>
+
+  </div> <!-- End of .content-container -->
+
+  <footer>
+    <p>© <%= new Date().getFullYear() %> Adama Shopping. All rights reserved.</p>
+  </footer>
+<script src="/js/service.js"></script>
+
+</body>
+</html>

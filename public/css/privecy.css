@@ -1,0 +1,275 @@
+    /* Custom Properties (Variables) */
+    :root {
+      --primary: #4A90E2; /* A vibrant blue */
+      --secondary: #50C878; /* A fresh green for accents */
+      --accent: #FFB347; /* A warm orange for highlights */
+      --danger: #FF6B6B; /* A clear red for warnings */
+      --text: #333C4E; /* Dark charcoal for main text */
+      --light-text: #6A7A90; /* Muted grey for secondary text */
+      --light-bg: #F0F2F5; /* Light grey background */
+      --card-bg: #FFFFFF; /* White for card backgrounds */
+      --radius: 12px; /* Standard border-radius */
+      --large-radius: 18px; /* Larger border-radius for main elements */
+      --shadow: 0 8px 30px rgba(0,0,0,0.08); /* Soft shadow */
+      --hover-shadow: 0 12px 40px rgba(0,0,0,0.12); /* Enhanced shadow on hover */
+      --transition-speed: 0.3s ease-out; /* Smooth transitions */
+    }
+
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      padding: 0 20px 40px; /* Adjusted padding to match home.ejs */
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header (from home.ejs) */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 18px 30px;
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      margin-top: 25px;
+      animation: fadeIn 0.6s ease;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0px;
+      z-index: 900;
+    }
+
+    .header-left h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-left h1 .material-icons {
+      font-size: 32px;
+    }
+    .header-left h1 img { /* Style for the logo image */
+      width: 60px; /* Adjust size as needed */
+      height: 60px;
+      object-fit: contain;
+      margin-right: 5px; /* Space between logo and text */
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    .header-nav .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: var(--radius);
+      transition: var(--transition-speed);
+      position: relative;
+    }
+
+    .header-nav .nav-link:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    .header-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .sidebar-toggle-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      z-index: 1100;
+      transition: var(--transition-speed);
+      display: none; /* Hide by default, show on small screens if needed */
+    }
+    .sidebar-toggle-btn:hover {
+      background: #3A7DD0;
+      transform: scale(1.05);
+    }
+
+
+    /* Main Content */
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 30px auto; /* Adjusted margin to match general spacing */
+      padding: 30px; /* Adjusted padding */
+      background-color: var(--card-bg);
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+    }
+
+    main:hover {
+      box-shadow: var(--hover-shadow);
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 24px; /* Adjusted font size */
+      margin-bottom: 15px; /* Adjusted margin */
+      margin-top: 30px; /* Adjusted margin */
+      border-bottom: 1px solid #E0E6ED; /* Matches home.ejs border style */
+      padding-bottom: 8px; /* Adjusted padding */
+      font-weight: 600;
+    }
+
+    h2:first-of-type { /* No top margin for the first h2 */
+        margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 15px; /* Adjusted margin */
+      color: var(--text);
+      font-size: 16px; /* Adjusted font size */
+    }
+
+    ul {
+      margin-left: 25px; /* Indent lists more */
+      margin-bottom: 20px; /* Adjusted margin */
+      list-style: disc;
+      color: var(--text);
+    }
+
+    li {
+      margin-bottom: 10px; /* Adjusted margin */
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      transition: color var(--transition-speed), text-decoration var(--transition-speed);
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--primary);
+    }
+
+    /* Footer (from home.ejs) */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--light-text);
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #E0E6ED;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Adjustments (from home.ejs) */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+      }
+      .header-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 15px;
+      }
+      .sidebar-toggle-btn {
+        display: block; /* Show the toggle button */
+        position: absolute; /* Position it absolutely */
+        left: 20px;
+        top: 20px;
+      }
+      .header-left h1 {
+        font-size: 24px;
+        margin-top: 20px; /* Space from the toggle button */
+      }
+      .header-left h1 img {
+        width: 50px;
+        height: 50px;
+      }
+
+      main {
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      p, li {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 0 15px 30px;
+      }
+      header {
+        padding: 15px;
+        border-radius: var(--radius);
+      }
+      .header-left h1 {
+        font-size: 22px;
+      }
+      .header-left h1 img {
+        width: 40px;
+        height: 40px;
+      }
+      .header-nav {
+        gap: 10px;
+      }
+      .header-nav .nav-link {
+        padding: 5px 10px;
+      }
+      .sidebar-toggle-btn {
+        left: 10px;
+        top: 10px;
+      }
+      main {
+        margin: 15px auto;
+        padding: 15px;
+        border-radius: var(--radius);
+      }
+      h2 {
+        font-size: 18px;
+      }
+      p, li {
+        font-size: 14px;
+      }
+    }

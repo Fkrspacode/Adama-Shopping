@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hi Adama Shopping</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script>
+document.write(unescape('%3Clink%20rel%3D%22stylesheet%22%20href%3D%22/css/inh.css%22%3E'));
+</script>
+
+<style>
+
+</style>
+</head>
+<body>
+<header>
+  <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><span class="material-icons">menu</span></button>
+  <div class="header-left">
+    <h1><img src="images/ads.png" width="95" height="95"></span>Adama Shopping</h1>
+  </div>
+  <nav class="header-nav">
+    <a href="/" class="nav-link active">Home</a>
+    <a href="/about" class="nav-link">About</a>
+    <a href="/privecy" class="nav-link">Privacy</a>
+    <a href="/services" class="nav-link">Service</a>
+    <a href="/logout" class="nav-link">Logout</a>
+  </nav>
+</header>
+<div class="user-sidebar" id="userSidebar">
+  <% if (user) { %>
+    <h2>Welcome, <%= user.name.split(' ')[0] %>!</h2>
+    <div class="user-info">
+      <img src="/images/<%= user.image || 'default-user.png' %>" alt="<%= user.name %>">
+      <div>
+        <strong><%= user.name %></strong><br>
+        <small><span class="material-icons" style="font-size: 16px;">phone</span> <%= user.phone %></small><br>
+        <small><span class="material-user" style="font-size: 14px;">UserName</span> <%= user.email %></small>
+      </div>
+    </div>
+    <div class="buttons">
+      <a href="/post" class="btn btn-primary"><span class="material-icons">add_circle</span> Post</a>
+      <a href="/mypost" class="btn"><span class="material-icons">inventory_2</span> My Post</a>
+      <a href="/order" class="btn"><span class="material-icons">receipt_long</span> Orders</a>
+      <form action="/logout" method="GET" style="display:inline;">
+        <button type="submit" class="btn logout-btn"><span class="material-icons">logout</span> Logout</button>
+      </form>
+    </div>
+  <% } else { %>
+    <h2>Hello, Guest!</h2>
+    <p style="color: var(--light-text);">Login to unlock all features:</p>
+    <div class="buttons">
+      <a href="/login" class="btn btn-primary"><span class="material-icons">login</span> Login</a>
+      <a href="/signup" class="btn btn-outline"><span class="material-icons">person_add</span> Sign</a>
+    </div>
+  <% } %>
+</div>
+<div class="filter-bar">
+  <div class="filter-btn active" onclick="filterCategory('all')">All</div>
+  <div class="filter-btn" onclick="filterCategory('mebrat')">mebrat</div>
+  <div class="filter-btn" onclick="filterCategory('17')">17</div>
+  <div class="filter-btn" onclick="filterCategory('Arada')">Arada</div>
+</div>
+<div class="search-bar">
+  <input type="text" id="search-input" placeholder="🔍 Search deliveries..." class="search-input">
+</div>
+<div id="posts-container" class="posts">
+  <% if (!posts || posts.length === 0) { %>
+    <p style="text-align: center; color: var(--light-text); font-size: 18px; margin-top: 50px;">
+      <span class="material-icons" style="font-size: 48px; display: block; margin-bottom: 10px;">inbox</span>
+      No deliveries available yet. Be the first to post!
+    </p>
+  <% } else { %>
+    <% posts.forEach(post => { %>
+      <div class="post" data-category="<%= post.category.toLowerCase() %>">
+        <div class="poster-info" onclick="viewUserPosts('<%= post.user_id %>')">
+          <img src="/images/<%= post.user_image || 'default-user.png' %>" alt="<%= post.user_name %>">
+          <div>
+            <strong><%= post.user_name %></strong><br>
+            <small><span class="material-icons" style="font-size: 14px;">phone</span> <%= post.user_phone %></small>
+          </div>
+        </div>
+        <h3><%= post.title %></h3>
+        <p class="description-text"><%= post.description %></p>
+        <% if (post.description && post.description.length > 150) { %> <!-- Adjust length as needed -->
+          <button class="read-more-btn" onclick="toggleDescription(this)">Read More</button>
+        <% } %>
+        <p class="category"><span class="material-icons" style="font-size: 16px;">folder</span> <%= post.category %></p>
+        <% if (post.budget) { %>
+          <p><strong><span class="material-icons" style="font-size: 16px;">payments</span> Budget:</strong> <%= post.budget %> ETB</p>
+        <% } %>
+        <% if (post.image) { %>
+          <img src="/images/<%= post.image %>" class="post-image" alt="Delivery image">
+        <% } %>
+          
+        <% if (user) { %>
+          <form class="order-form" data-post-id="<%= post.id %>">
+            <label for="quantity-<%= post.id %>">Quantity:</label>
+            <input type="number" id="quantity-<%= post.id %>" name="quantity" value="1" min="1" class="quantity-input">
+            <button type="submit" class="order-btn"><span class="material-icons">shopping_bag</span> Order This</button>
+          </form>
+          <button class="like-btn <%= post.isLiked ? 'liked' : '' %>" data-post-id="<%= post.id %>">
+            <span class="material-icons">favorite</span> <span class="like-count"><%= post.likes %></span>
+          </button>
+        <% } else { %>
+          <p style="margin-top: 15px; color: var(--light-text);">
+            <span class="material-icons" style="font-size: 16px; vertical-align: middle;">favorite</span> Likes: <%= post.likes %> (Login to like)
+          </p>
+        <% } %>
+      </div>
+    <% }) %>
+  <% } %>
+</div>
+<footer>
+  <p>© <%= new Date().getFullYear() %> Adama Shopping. All rights reserved.</p>
+</footer>
+<script src="/js/indh.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delivery Hub | My Orders</title>
+  <link rel="stylesheet" href="/css/order.css">
+  <style>
+   
+  </style>
+</head>
+<body>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <p>💳 Payment Successful! Your order is now sent to Admin Payments.</p>
+    <button class="close-btn" onclick="closeModal()">OK</button>
+  </div>
+</div>
+
+<!-- Bank Info Modal -->
+<div id="bankModal" class="modal">
+  <div class="modal-content">
+    <h3>🏦 Bank Payment Info</h3>
+    <p><strong>Bank Name:</strong> <span id="modalBankName"></span></p>
+    <p>
+      <strong>Account Name:</strong> <span id="modalAccountName"></span>
+    </p>
+    <p>
+      <strong>Account Number:</strong> 
+      <span id="modalAccountNumber"></span>
+      <button type="button" class="copy-btn" onclick="copyAccountNumber()">📋 Copy</button>
+    </p>
+
+    <h4>💳 Enter Your Bank Info</h4>
+    <form id="bankForm" method="POST" style="margin-top:10px;">
+      <textarea name="buyer_account_name" placeholder="Your Account Name account name and your location" required></textarea><br>
+
+      <input type="hidden" name="order_id" id="modalOrderId">
+      <button type="submit" class="pay-btn">Submit Payment Info</button>
+    </form>
+
+    <button class="close-btn" onclick="closeBankModal()">Close</button>
+  </div>
+</div>
+
+<!-- Image Preview Modal -->
+<div id="imageModal">
+  <span class="close-btn" onclick="closeImageModal()">✖️</span>
+  <img class="modal-img" id="modalImage" src="" alt="Preview">
+</div>
+
+<header>
+  <h1><img src="images/ads.png" width="80" height="80">📜 My Orders</h1>
+  <nav>
+    <a href="/">🏠 Home</a>
+    <a href="/about">ℹ️ About</a>
+    <a href="/privacy">🔒 Privacy</a>
+    <a href="/services">Services</a>
+    <a href="/logout" class="btn logout-btn">Logout</a>
+  </nav>
+</header>
+
+<div class="orders">
+  <% if (!orders || orders.length === 0) { %>
+    <p>You have no orders yet.</p>
+  <% } else { %>
+    <% let totalBudget = 0; %>
+    <% orders.forEach(order => { %>
+      <% totalBudget += order.total_price || 0; %>
+      <div class="order">
+        <% if (order.post_image) { %>
+          <img src="/images/<%= order.post_image %>" alt="<%= order.title %>" class="post-image">
+        <% } %>
+        <div class="order-details">
+          <h3><%= order.title %></h3>
+          <% if (order.category) { %>
+            <p>📂 <%= order.category %></p>
+          <% } %>
+          <div class="seller-info">
+            <img src="/images/<%= order.seller_image || 'default-user.png' %>" alt="<%= order.seller_name %>">
+            <div>
+              <strong><%= order.seller_name %></strong><br>
+              <small>📞 <%= order.seller_phone %></small>
+            </div>
+          </div>
+          <p><strong>Quantity:</strong> <%= order.quantity %></p>
+          <% if (order.budget) { %>
+            <p><strong>💰 Budget per item:</strong> <%= order.budget %> ETB</p>
+            <p><strong>💰 Total:</strong> <%= order.total_price ? Number(order.total_price).toFixed(2) : '0.00' %> ETB</p>
+          <% } %>
+          <p class="order-meta">🗓 Ordered on: <%= new Date(order.created_at).toLocaleString() %></p>
+
+          <button type="button" class="pay-btn"
+            data-bank="<%= order.seller_bank_name %>"
+            data-account="<%= order.seller_account_name %>"
+            data-number="<%= order.seller_account_number %>"
+            data-orderid="<%= order.id %>">
+            💳 Pay Now
+          </button>
+
+          <form action="/order/delete/<%= order.id %>" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this order?');">
+            <button type="submit" class="delete-btn">🗑️ Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+
+    <div class="total-budget">
+      Total Budget: <%= totalBudget ? Number(totalBudget).toFixed(2) : '0.00' %> ETB
+    </div>
+    <form action="/order/pay-all" method="POST">
+      <input type="hidden" name="total" value="<%= totalBudget %>">
+      <button type="submit" class="pay-btn">💳 Pay Total</button>
+    </form>
+  <% } %>
+</div>
+
+<footer class="footer">
+  <p>© <%= new Date().getFullYear() %> Delivery Hub. All rights reserved.</p>
+</footer>
+
+<script src="/js/order.js"></script>
+</body>
+</html>

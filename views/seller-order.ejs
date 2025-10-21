@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delivery Hub | Seller Orders</title>
+  <link rel="stylesheet" href="/css/eod.css">
+  <style>
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📦 Orders for Your Posts</h1>
+  <div class="buttons">
+    <a href="/" class="btn">🏠 Home</a>
+    <a href="/logout" class="btn logout-btn">Logout</a>
+  </div>
+</header>
+
+<div class="orders">
+  <% if (!orders || orders.length === 0) { %>
+    <p>No orders yet for your posts.</p>
+  <% } else { %>
+    <% orders.forEach(order => { %>
+      <div class="order">
+        <% if (order.post_image) { %>
+          <img src="/images/<%= order.post_image %>" alt="<%= order.post_title %>" class="post-image">
+        <% } %>
+
+        <div class="order-details">
+          <h3><%= order.post_title %></h3>
+
+          <div class="buyer-info">
+            <img src="/images/<%= order.buyer_image || 'default-user.png' %>" alt="<%= order.buyer_name %>">
+            <div>
+              <strong><%= order.buyer_name %></strong><br>
+              <small>📞 <%= order.buyer_phone %></small>
+            </div>
+          </div>
+
+          <p><strong>Quantity:</strong> <%= order.quantity %></p>
+          <p><strong>Total Price:</strong> <%= order.total_price %> ETB</p>
+
+          <p class="order-meta">
+            🗓 Ordered on: <%= new Date(order.created_at).toLocaleString() %><br>
+            Status: 
+            <% if(order.paid) { %>
+              <span class="status-paid">PAID</span>
+            <% } else { %>
+              <span class="status-unpaid">UNPAID</span>
+            <% } %>
+          </p>
+        </div>
+      </div>
+    <% }) %>
+  <% } %>
+</div>
+
+<footer class="footer">
+  <p>© <%= new Date().getFullYear() %> Delivery Hub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

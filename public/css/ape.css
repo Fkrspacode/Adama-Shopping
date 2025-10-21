@@ -1,0 +1,37 @@
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+    header { display: flex; justify-content: space-between; align-items: center; background: #3498db; color: white; padding: 10px 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    header h1 { margin: 0; font-size: 24px; }
+    .logout-btn { background-color: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .logout-btn:hover { background-color: #c0392b; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background: #2980b9; color: white; }
+    tr:hover { background: #f1f1f1; }
+    .user-info { display: flex; align-items: center; gap: 10px; }
+    .user-info img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc; }
+    .payment-status { font-weight: bold; padding: 4px 8px; border-radius: 4px; color: white; text-align: center; display: inline-block; min-width: 70px; }
+    .paid { background: #2ecc71; }
+    .unpaid { background: #e74c3c; }
+    .total-summary { margin-top: 20px; font-size: 18px; font-weight: bold; padding: 12px; background: #ecf0f1; border-radius: 8px; text-align: center; }
+    .export-btn { margin-top: 10px; padding: 8px 16px; background: #27ae60; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    .export-btn:hover { background: #1e8449; }
+    .buyer-orders { display: none; margin-top: 5px; background: #ecf0f1; border-radius: 6px; padding: 10px; animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    .buyer-orders table { width: 100%; border-collapse: collapse; }
+    .buyer-orders th, .buyer-orders td { padding: 6px; border-bottom: 1px solid #ccc; font-size: 14px; }
+    .buyer-orders th { background: #3498db; color: white; }
+    .clickable { cursor: pointer; text-decoration: underline; color: #2980b9; transition: 0.2s; }
+    .clickable:hover { color: #1f6391; }
+    .seller-info { display: flex; align-items: center; gap: 6px; }
+    .seller-info img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid #aaa; }
+    .action-btn { padding: 6px 10px; border: none; border-radius: 5px; color: white; cursor: pointer; font-size: 13px; margin-right: 4px; }
+    .check-btn { background-color: #27ae60; } .check-btn:hover { background-color: #1e8449; }
+    .delete-btn { background-color: #e74c3c; } .delete-btn:hover { background-color: #c0392b; }
+    .bank-btn { background-color: #8e44ad; } .bank-btn:hover { background-color: #71368a; }
+    .seller-category { display: inline-block; background: #f39c12; color: white; padding: 3px 8px; border-radius: 5px; font-size: 12px; margin-top: 3px; }
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+    .modal-content { background: white; margin: 15% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px; text-align: center; }
+    .close-btn { margin-top: 10px; padding: 8px 16px; background: #2980b9; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    .close-btn:hover { background: #1f6391; }
+    .copy-btn { background: #2c3e50; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; margin-left: 5px; }
+    .copy-btn:hover { background: #1a252f; }

@@ -1,0 +1,554 @@
+  /* Custom Properties (Variables) - Directly copied from home.ejs */
+    :root {
+      --primary: #4A90E2; 
+      --secondary: #50C878;
+      --accent: #FFB347; 
+      --danger: #FF6B6B; 
+      --text: #333C4E; 
+      --light-text: #6A7A90;
+      --light-bg: #F0F2F5; 
+      --card-bg: #FFFFFF;
+      --radius: 12px;
+      --large-radius: 18px; 
+      --shadow: 0 8px 30px rgba(0,0,0,0.08); 
+      --hover-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      --transition-speed: 0.3s ease-out;
+    }
+
+    /* Universal box-sizing - Directly copied from home.ejs */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Body styles - Directly copied from home.ejs */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      padding: 0 20px 40px; /* Consistent padding */
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center content horizontally */
+      min-height: 100vh;
+    }
+
+    /* --- Header Styles - Directly copied from home.ejs for exact replication --- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 18px 30px; 
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      margin-top: 25px;
+      animation: fadeIn 0.6s ease;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0px;
+      z-index: 900;
+      width: 100%; /* Ensure it spans full width of its container */
+      max-width: 1200px; /* Limit header width on very large screens for consistent layout */
+    }
+
+    .header-left h1 {
+      margin: 0;
+      font-size: 28px; 
+      font-weight: 700; 
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white; /* Ensure text is white as per header background */
+    }
+    .header-left h1 img {
+      width: 45px; /* Adjusted logo size for header */
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      vertical-align: middle;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 25px; 
+    }
+
+    .header-nav .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: var(--radius);
+      transition: var(--transition-speed);
+      position: relative;
+    }
+
+    .header-nav .nav-link:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    .header-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* Media query for header responsiveness - Copied from home.ejs */
+    @media (max-width: 768px) { 
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+      }
+      .header-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 15px;
+      }
+    }
+    /* --- End Header Styles --- */
+
+    /* Main Container for the rest of the page content */
+    .main-container {
+      width: 100%;
+      max-width: 1200px; /* Matches header max-width for alignment */
+      padding: 20px;
+      box-sizing: border-box;
+      margin-top: 30px; /* Space below sticky header */
+    }
+
+    h1 {
+      color: var(--primary); /* Consistent primary color */
+      margin-bottom: 25px;
+      font-size: 2.5em; /* Larger heading */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+      text-align: center;
+      padding-top: 20px;
+      font-weight: 700;
+      animation: fadeIn 0.7s ease 0.1s forwards;
+      opacity: 0;
+    }
+
+    /* --- Search Bar Styling - Adapted from home.ejs search-input --- */
+    .search-bar-container {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      animation: fadeIn 0.7s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .search-bar {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      border: 1px solid #D1D9E6; /* From home.ejs search-input */
+      border-radius: var(--large-radius); /* From home.ejs search-input */
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05); /* From home.ejs search-input */
+      transition: var(--transition-speed);
+      background: var(--card-bg); /* Match home.ejs search input background */
+    }
+
+    .search-bar input[type="text"] {
+      border: none; /* Removed border as it's on the container */
+      padding: 12px 20px; /* From home.ejs search-input */
+      font-size: 16px; /* From home.ejs search-input */
+      flex-grow: 1;
+      outline: none;
+      color: var(--text);
+      background: transparent; /* Transparent so container background shows */
+    }
+
+    .search-bar input[type="text"]::placeholder {
+        color: var(--light-text); /* From home.ejs search-input */
+    }
+
+    .search-bar input[type="text"]:focus {
+      /* Focus styling is better on the container for a combined input/button */
+      outline: none; /* Remove default browser outline */
+      box-shadow: none; /* Handled by parent on focus */
+    }
+    .search-bar:focus-within { /* Apply focus style to the container */
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(74,144,226,0.2);
+      transform: translateY(-1px);
+    }
+
+
+    .search-bar button {
+      background-color: var(--primary); /* Use primary color */
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: var(--transition-speed);
+      border-radius: 0 var(--large-radius) var(--large-radius) 0; /* Match search input */
+    }
+
+    .search-bar button:hover {
+      background-color: #3A7DD0; /* Darker primary on hover */
+      transform: translateY(-2px); /* Lift button on hover */
+      box-shadow: var(--shadow); /* Add shadow on hover */
+    }
+
+    /* --- CSS Grid Container for Posts - Directly copied from home.ejs for consistency --- */
+    .posts-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
+      gap: 25px; 
+      margin-bottom: 30px;
+      animation: fadeIn 0.8s ease 0.3s forwards;
+      opacity: 0;
+    }
+
+    /* Individual Post Card Styling - Directly copied/adapted from home.ejs post styles */
+    .post {
+      background: var(--card-bg);
+      border-radius: var(--large-radius); 
+      box-shadow: var(--shadow);
+      padding: 22px; 
+      transition: var(--transition-speed);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      height: 100%; /* Ensure posts in grid are same height */
+    }
+
+    .post:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--hover-shadow);
+    }
+
+    .user-info { /* Adapted from home.ejs poster-info */
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: var(--transition-speed);
+      padding: 5px;
+      border-radius: var(--radius);
+      border-bottom: 1px solid #F0F2F5; /* Add a divider below user info */
+      padding-bottom: 15px;
+    }
+    .user-info:hover {
+        background: var(--light-bg);
+    }
+
+    .user-info img {
+      width: 50px; 
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--secondary); 
+    }
+
+    .user-info strong {
+      font-size: 17px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .user-info span { /* For phone number or other details */
+      margin-left: auto;
+      color: var(--light-text);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .user-info span .material-icons {
+        font-size: 14px;
+    }
+
+    .post h3 {
+      margin: 8px 0; 
+      font-size: 20px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .post p {
+      margin: 6px 0;
+      line-height: 1.6;
+      color: var(--light-text);
+      flex-grow: 1; /* Allows description to take available height */
+    }
+
+    .post p em { /* For category text */
+      font-style: italic;
+      color: var(--primary); 
+      font-weight: 500;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    .post p em .material-icons {
+        font-size: 16px;
+    }
+
+    .post img.post-image {
+      width: 100%;
+      max-height: 250px; /* Consistent image height */
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-top: 15px; 
+      margin-bottom: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid #E0E6ED; /* Light border around image */
+    }
+
+    .actions {
+      margin-top: auto; /* Push actions to the bottom of the card */
+      display: flex;
+      gap: 10px;
+      justify-content: space-around;
+      flex-shrink: 0;
+      padding-top: 15px;
+      border-top: 1px solid #F0F2F5; /* Add a divider */
+      margin-top: 15px;
+    }
+
+    .actions button { /* Adapted from home.ejs btn styles */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition-speed);
+      border: none;
+      font-size: 15px;
+      flex-grow: 1; /* Allow buttons to grow */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Add default button shadow */
+    }
+
+    .actions button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .delete-btn { /* Adapted from home.ejs danger btn style */
+      background-color: var(--danger);
+      color: white;
+    }
+    .delete-btn:hover {
+      background-color: #E55353; /* Darker danger on hover */
+    }
+
+    .edit-btn { /* Adapted from home.ejs primary btn style */
+      background-color: var(--primary);
+      color: white;
+    }
+    .edit-btn:hover {
+      background-color: #3A7DD0; /* Darker primary on hover */
+    }
+
+    /* No Posts Message - Adapted from home.ejs */
+    .no-posts {
+      text-align: center;
+      padding: 40px;
+      background-color: var(--card-bg);
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      margin-top: 30px;
+      color: var(--light-text);
+      font-size: 18px;
+      animation: fadeIn 0.8s ease 0.4s forwards;
+      opacity: 0;
+      width: 100%;
+      max-width: 600px; /* Limit width */
+    }
+    .no-posts .material-icons {
+        font-size: 48px; 
+        display: block; 
+        margin-bottom: 10px;
+        color: var(--light-text);
+    }
+
+    .no-posts a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease, text-decoration 0.2s ease;
+    }
+
+    .no-posts a:hover {
+      text-decoration: underline;
+      color: #3A7DD0;
+    }
+
+    /* Back Home Button - Adapted from home.ejs btn-outline style */
+    a.back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 40px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 10px 20px;
+      border: 1px solid var(--primary);
+      border-radius: var(--radius);
+      transition: var(--transition-speed);
+      background: transparent;
+      animation: fadeIn 0.8s ease 0.5s forwards;
+      opacity: 0;
+    }
+    a.back-home:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Animations - Copied from home.ejs */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes rotate { /* Not directly used, but kept for consistency if needed */
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+
+    /* Media Queries for responsiveness - Adapted from home.ejs media queries */
+    @media (max-width: 992px) {
+      .posts-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        gap: 20px;
+      }
+      header {
+        padding: 15px 20px;
+      }
+      .header-nav {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 600px) { /* Used 600px as per home.ejs's media query structure */
+      body {
+        padding: 0 15px 30px;
+      }
+      header {
+        padding: 15px;
+        border-radius: var(--radius);
+      }
+      .header-left h1 {
+        font-size: 24px;
+      }
+      .header-left h1 img {
+        width: 40px;
+        height: 40px;
+      }
+      .header-nav {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .header-nav .nav-link {
+        padding: 5px 10px;
+      }
+      .main-container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 2em;
+        padding-top: 15px;
+      }
+      .search-bar {
+        flex-direction: column;
+        border: none; /* Remove border from container on mobile, add to input */
+        box-shadow: none;
+        border-radius: var(--radius); 
+      }
+      .search-bar input[type="text"] {
+        border: 1px solid #D1D9E6; /* Add border to input itself */
+        border-radius: var(--radius);
+        margin-bottom: 10px;
+        padding: 10px 15px;
+        font-size: 15px;
+      }
+      .search-bar:focus-within { /* Re-adjust focus for mobile */
+        box-shadow: none;
+        transform: none;
+      }
+      .search-bar input[type="text"]:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(74,144,226,0.2);
+        transform: translateY(-1px);
+      }
+      .search-bar button {
+        border-radius: var(--radius); 
+        width: 100%; 
+        padding: 10px 15px;
+        font-size: 15px;
+      }
+      .posts-grid-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .post {
+        padding: 15px;
+        border-radius: var(--radius);
+      }
+      .user-info {
+        flex-wrap: wrap; 
+        justify-content: center;
+        text-align: center;
+      }
+      .user-info img {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      .user-info strong, .user-info span {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        text-align: center;
+      }
+      .actions {
+        flex-direction: row; /* Keep as row, but adjust sizing */
+        justify-content: center;
+        gap: 8px;
+      }
+      .actions button {
+        flex: 1; /* Distribute space */
+        max-width: 150px; /* Cap width for smaller buttons */
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+      .no-posts {
+        padding: 25px;
+        font-size: 16px;
+      }
+      .no-posts .material-icons {
+        font-size: 40px;
+      }
+      a.back-home {
+        font-size: 15px;
+        padding: 8px 15px;
+      }
+    }

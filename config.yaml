@@ -1,0 +1,43 @@
+# Database configuration
+database:
+  host: localhost
+  user: root
+  password: your_mysql_password
+  name: adama_shopping
+  port: 3306
+  connectionLimit: 10  # max simultaneous connections
+
+# Server configuration
+server:
+  port: 4000
+  baseUrl: http://localhost:4000
+
+# JWT / Authentication
+jwt:
+  secret: your_secret_key
+  expiresIn: 1d  # token expiry (1 day)
+
+# Email / Notifications (example with SMTP)
+email:
+  service: gmail
+  user: your_email@gmail.com
+  password: your_email_password
+  from: 'Adama Shopping <no-reply@adama-shopping.com>'
+
+# Payment gateway settings (example placeholder)
+payment:
+  gateway: stripe
+  publicKey: your_stripe_public_key
+  secretKey: your_stripe_secret_key
+  currency: ETB
+
+# App-specific settings
+app:
+  defaultCurrency: ETB
+  defaultDeliveryFee: 50
+  maxOrderWeightKg: 30
+  allowedFileTypes: 
+    - jpg
+    - png
+    - pdf
+  maxFileSizeMB: 5

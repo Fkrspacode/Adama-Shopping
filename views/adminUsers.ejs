@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - User Verification</title>
+  <link rel="stylesheet" href="/css/aue.css"
+  <style>
+ 
+  </style>
+</head>
+<body>
+  <h2>👑 Admin Panel - User Verification</h2>
+
+  <!-- Search bar -->
+  <div class="search-container">
+    <input
+      type="text"
+      id="searchInput"
+      class="search-input"
+      placeholder="🔍 Search by name, phone, or email..."
+      onkeyup="filterUsers()"
+    />
+  </div>
+
+  <div class="container">
+    <!-- Unverified Users -->
+    <div class="section">
+      <h3>
+        <span>❌ Unverified Users</span>
+        <span class="count" id="unverifiedCount">
+            <% users.filter(u => !u.is_verified).length %>
+        </span>
+      </h3>
+      <table id="unverifiedTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.filter(u => !u.is_verified).forEach(user => { %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.name %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.email %></td>
+              <td>
+                <form action="/admin/users/verify/<%= user.id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="btn verify">Verify</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Verified Users -->
+    <div class="section">
+      <h3>
+        <span>✅ Verified Users</span>
+        <span class="count" id="verifiedCount">
+            <% users.filter(u => u.is_verified).length %>
+        </span>
+      </h3>
+      <table id="verifiedTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.filter(u => u.is_verified).forEach(user => { %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.name %></td>
+              <td><%= user.phone %></td>
+              <td><%= user.email %></td>
+              <td>
+                <form action="/admin/users/unverify/<%= user.id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="btn unverify">Unverify</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function updateCounts() {
+        const unverifiedTable = document.getElementById("unverifiedTable");
+        const verifiedTable = document.getElementById("verifiedTable");
+
+        // Count only visible rows (after filtering)
+        const unverifiedVisibleRows = Array.from(unverifiedTable.tBodies[0].rows).filter(row => row.style.display !== 'none');
+        const verifiedVisibleRows = Array.from(verifiedTable.tBodies[0].rows).filter(row => row.style.display !== 'none');
+
+        document.getElementById("unverifiedCount").textContent = unverifiedVisibleRows.length;
+        document.getElementById("verifiedCount").textContent = verifiedVisibleRows.length;
+    }
+
+    function filterUsers() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const tables = [document.getElementById("unverifiedTable"), document.getElementById("verifiedTable")];
+      tables.forEach(table => {
+        const rows = table.getElementsByTagName("tr");
+        for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+          const row = rows[i];
+          const text = row.innerText.toLowerCase();
+          row.style.display = text.includes(input) ? "" : "none";
+        }
+      });
+      updateCounts(); // Update counts after filtering
+    }
+
+    // Initial count update when the page loads
+    document.addEventListener('DOMContentLoaded', updateCounts);
+  </script>
+</body>
+</html>

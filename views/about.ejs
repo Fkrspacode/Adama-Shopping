@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Adama Shopping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/about.css">
+  <style>
+  </style>
+</head>
+<body>
+  <header>
+    <button class="sidebar-toggle-btn" onclick="toggleSidebar()"><span class="material-icons">menu</span></button>
+    <div class="header-left">
+      <h1><img src="/images/ads.png" alt="Adama Shopping Logo">Adama Shopping</h1>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px; flex-wrap: wrap;">
+      <div class="langbar" role="navigation" aria-label="Language selector">
+        <button class="langbtn active" data-lang="en">English</button>
+        <button class="langbtn" data-lang="am">አማርኛ</button>
+        <button class="langbtn" data-lang="om">Afaan Oromoo</button>
+      </div>
+      <nav class="header-nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link active" href="/about">About</a>
+        <a class="nav-link" href="/privecy">Privacy</a>
+        <a class="nav-link" href="/services">Service</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <!-- Video Background -->
+      <video id="heroVideo" class="hero-video-bg" autoplay muted loop playsinline></video>
+
+      <div class="card">
+        <h1 data-key="heading">About Adama Shopping</h1>
+        <p class="lead" data-key="lead">We are a community-focused delivery service based in Adama that brings groceries, necessities, and small goods straight to your door fast, friendly and affordable.</p>
+
+        <div class="stats" aria-hidden="false">
+          <div class="stat">
+            <strong data-key="stat1">50k+</strong>
+            <span data-key="stat1_label">Deliveries</span>
+          </div>
+          <div class="stat">
+            <strong data-key="stat2">8+</strong>
+            <span data-key="stat2_label">Delivery Zones</span>
+          </div>
+          <div class="stat">
+            <strong data-key="stat3">24/7</strong>
+            <span data-key="stat3_label">Support</span>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <strong data-key="f1_title">Fast delivery</strong>
+            <div data-key="f1_text">Order and receive within hours in most areas of Adama.</div>
+          </div>
+          <div class="feature">
+            <strong data-key="f2_title">Local stores</strong>
+            <div data-key="f2_text">We partner with trusted local vendors to support the community.</div>
+          </div>
+          <div class="feature">
+            <strong data-key="f3_title">Easy tracking</strong>
+            <div data-key="f3_text">Track your order live from pickup to doorstep.</div>
+          </div>
+          <div class="feature">
+            <strong data-key="f4_title">Cash & Mobile Pay</strong>
+            <div data-key="f4_text">Pay however you prefer cash or mobile money.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 data-key="deliver_title">How delivery works</h3>
+          <ol>
+            <li data-key="step1"><strong>Choose items</strong> from local shops</li>
+            <li data-key="step2"><strong>Confirm and pay</strong> securely</li>
+            <li data-key="step3"><strong>Driver picks up & delivers</strong> right to you</li>
+          </ol>
+
+          <div style="margin-top:12px">
+            <a class="btn btn-primary" href="/" data-key="start_button"><span class="material-icons" style="font-size: 20px;">shopping_cart</span> Start shopping</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <h4 data-key="contact">Contact us</h4>
+          <p data-key="contact_text">
+            <span style="display:flex; align-items:center; gap:8px; margin-bottom: 5px;">
+              <span class="material-icons" style="font-size: 18px; color: var(--primary);">phone</span> 
+              +251 968089511
+            </span>
+            <span style="display:flex; align-items:center; gap:8px;">
+              <span class="material-icons" style="font-size: 18px; color: var(--primary);">email</span> 
+              support@adama-shopping.local
+            </span>
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="faq card">
+      <h3 data-key="faq">Frequently Asked Questions</h3>
+      <div class="faq-item">
+        <strong data-key="q1">Do you deliver outside Adama? <span class="material-icons">expand_more</span></strong>
+        <div data-key="a1">We deliver to nearby towns depending on coverage — check delivery zones at checkout.</div>
+      </div>
+      <div class="faq-item">
+        <strong data-key="q2">What are your hours? <span class="material-icons">expand_more</span></strong>
+        <div data-key="a2">Our drivers operate from early morning to late evening. Some services offer 24/7 support.</div>
+      </div>
+      <div class="faq-item">
+        <strong data-key="q3">How can I track my order? <span class="material-icons">expand_more</span></strong>
+        <div data-key="a3">Once your order is confirmed, you will receive a link to track its live status from pickup to delivery.</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© <%= new Date().getFullYear() %> Adama Shopping. All rights reserved. | <a href="/terms">Terms of Service</a></p>
+  </footer>
+
+ <script src="/js/about.js"></script>
+</body>
+</html>

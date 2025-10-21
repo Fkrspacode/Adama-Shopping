@@ -1,0 +1,333 @@
+
+    :root {
+      --primary: #4A90E2; 
+      --secondary: #50C878;
+      --accent: #FFB347; 
+      --danger: #FF6B6B; 
+      --text: #333C4E; 
+      --light-text: #6A7A90;
+      --light-bg: #F0F2F5; 
+      --card-bg: #FFFFFF;
+      --radius: 12px;
+      --large-radius: 18px; 
+      --shadow: 0 8px 30px rgba(0,0,0,0.08); 
+      --hover-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      --transition-speed: 0.3s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      padding: 0 20px 40px; 
+      line-height: 1.6;
+      display: flex; /* For full page layout */
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 18px 30px;
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      margin-top: 25px;
+      animation: fadeIn 0.6s ease;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0px;
+      z-index: 900;
+    }
+
+    .header-left h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-left h1 img { 
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-right: 5px; 
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    .header-nav .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: var(--radius);
+      transition: var(--transition-speed);
+      position: relative;
+    }
+
+    .header-nav .nav-link:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    .header-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .sidebar-toggle-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      z-index: 1100;
+      transition: var(--transition-speed);
+      display: none; /* Hide by default, show on small screens */
+    }
+    .sidebar-toggle-btn:hover {
+      background: #3A7DD0;
+      transform: scale(1.05);
+    }
+
+    .content-container {
+      flex-grow: 1; /* Allows main content to expand */
+      max-width: 900px; /* Consistent max-width */
+      margin: 30px auto; /* Consistent margin */
+      padding: 30px; /* Consistent padding */
+      background-color: var(--card-bg);
+      border-radius: var(--large-radius);
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+    }
+
+    .content-container:hover {
+      box-shadow: var(--hover-shadow);
+      transform: translateY(-3px);
+    }
+
+    h1 {
+      font-size: 32px; 
+      margin-bottom: 30px; 
+      text-align: center;
+      color: var(--light-bg);
+      font-weight: 700;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px; 
+      padding-bottom: 25px;
+    }
+
+    .service-card {
+      background: var(--light-bg); 
+      border-radius: var(--large-radius);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      padding: 25px; 
+      text-align: center;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+      border: 1px solid transparent; /* Subtle border for hover effect */
+      display: flex; /* Flex for vertical alignment */
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px); /* Consistent lift with home.ejs posts */
+      box-shadow: var(--shadow); /* Use standard shadow on hover */
+      border-color: var(--primary); /* Primary color border on hover */
+    }
+
+    .service-card img {
+      width: 100px; 
+      height: 100px;
+      margin: 0 auto 20px auto;
+ 
+    }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+      color: var(--text); 
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: var(--light-text);
+      font-size: 15px;
+      line-height: 1.6;
+      flex-grow: 1; 
+    }
+    .telegram-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center; 
+      gap: 10px;
+      margin-top: 40px; 
+      padding: 12px 25px; 
+      background: #0088cc; 
+      color: white;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px; /* Consistent font size */
+      transition: all var(--transition-speed);
+      box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+      border: none; /* Ensure no default button border */
+      cursor: pointer;
+    }
+
+    .telegram-btn:hover {
+      background: #00aaff;
+      box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
+      transform: translateY(-2px); /* Consistent lift effect */
+    }
+    
+    .telegram-btn .material-icons {
+        font-size: 20px; /* Consistent icon size */
+    }
+
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--light-text);
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #E0E6ED;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Adjustments (from home.ejs) */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+      }
+      .header-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        gap: 15px;
+      }
+      .sidebar-toggle-btn {
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+      }
+      .header-left h1 {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+      .header-left h1 img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .content-container {
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .service-card {
+        padding: 20px;
+      }
+      .service-card img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+      }
+      .service-card h3 {
+        font-size: 18px;
+      }
+      .service-card p {
+        font-size: 14px;
+      }
+      .telegram-btn {
+        font-size: 15px;
+        padding: 10px 20px;
+        width: 100%; /* Make button full width */
+      }
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 0 15px 30px;
+      }
+      header {
+        padding: 15px;
+        border-radius: var(--radius);
+      }
+      .header-left h1 {
+        font-size: 22px;
+      }
+      .header-left h1 img {
+        width: 40px;
+        height: 40px;
+      }
+      .header-nav {
+        gap: 10px;
+      }
+      .header-nav .nav-link {
+        padding: 5px 10px;
+      }
+      .sidebar-toggle-btn {
+        left: 10px;
+        top: 10px;
+      }
+      .content-container {
+        margin: 15px auto;
+        padding: 15px;
+        border-radius: var(--radius);
+      }
+      h1 {
+        font-size: 22px;
+        margin-bottom: 25px;
+      }
+      .telegram-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+      }
+    }
